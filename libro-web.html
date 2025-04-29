@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro Web: Evaluación de Impacto en la Era Digital - Vinicio Arcos Naranjo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/libro-web.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Vinicio Arcos</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#about">Sobre Mí</a></li>
+                    <li><a href="index.html#investigación">Investigación</a></li>
+                    <li><a href="index.html#portfolio">Portafolio</a></li>
+                    <li><a href="libro-web.html" class="active">Ebook</a></li>
+                    <li><a href="index.html#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+   <!--  
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">🌓</button>  -->
+
+    <main class="libro-web-container">
+        <aside class="libro-web-sidebar">
+            <h2>Contenido</h2>
+            <ul id="tabla-contenidos">
+                <!-- Se llenará dinámicamente con JavaScript -->
+            </ul>
+        </aside>
+        <section class="libro-web-content">
+            <h1 id="libro-titulo">Evaluación de Impacto en la Era Digital</h1>
+            <div id="libro-contenido" class="libro-contenido">
+                <!-- El contenido del capítulo se cargará aquí dinámicamente -->
+            </div>
+            <div class="libro-navegacion">
+                <button id="capitulo-anterior" class="btn">Capítulo Anterior</button>
+                <button id="capitulo-siguiente" class="btn">Siguiente Capítulo</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Vinicio Arcos Naranjo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/libro-web.js"></script>
+</body>
+</html>

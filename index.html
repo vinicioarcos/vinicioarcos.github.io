@@ -3,172 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinicio Arcos - Data Science y Econometría</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        header p {
-            font-size: 1.2rem;
-        }
-        nav {
-            background-color: #34495e;
-            padding: 1rem;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav ul li a:hover {
-            color: #3498db;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        section {
-            margin: 40px 0;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        section h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .item {
-            margin: 20px 0;
-        }
-        .item h3 {
-            margin: 0;
-            color: #34495e;
-        }
-        .item p {
-            margin: 5px 0;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        @media (max-width: 768px) {
-            nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-            header h1 {
-                font-size: 1.8rem;
-            }
-            header p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    <title>Vinicio Arcos Naranjo - Economista y Evaluador de Impacto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
+<!-- <button id="dark-mode-toggle">🌓</button>  -->
+
 <body>
+    
+    
     <header>
-        <h1>Vinicio Arcos</h1>
-        <p>Docente | Data Science | Econometría</p>
+        <div class="container">
+            <nav>
+                <div class="logo">Vinicio Arcos</div>
+             
+                <ul class="nav-links">
+                    
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#about">Sobre Mí</a></li>
+                    <li><a href="#specialties">Investigación</a></li>
+                    <li><a href="#portfolio">Portafolio</a></li>
+                    <li><a href="libro-web.html">Ebook</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#articulos">Artículos</a></li>
-            <li><a href="#libros">Libros</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Vinicio Arcos-Naranjo</h1>
+            <p>Economista y Docente Universitario, especializado en Evaluación de Impacto de Políticas Públicas y Data Science aplicado a la Economía.</p>
+            <a href="#contact" class="btn">Contáctame</a>
+        </div>
+    </section>
 
-    <div class="container">
-        <section id="inicio">
-            <h2>Bienvenidos</h2>
-            <p>Soy Vinicio Arcos, docente especializado en Data Science y Econometría. En esta página encontrarás mis artículos académicos, libros publicados y entradas de blog donde comparto conocimientos y reflexiones sobre análisis de datos, economía y más.</p>
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Soy un economista con Maestría en Economía y estudios de Políticas Públicas, especializado en la evaluación de impacto de políticas públicas. </p>
+                    <br>Mi enfoque se centra en el mercado laboral y la economía de la educación, utilizando técnicas avanzadas de Econometría, Estadística y Data Science para obtener insights profundos y significativos.</br>
+                    <br><p>Con años de experiencia en el campo, he trabajado en proyectos que han influido en la toma de decisiones de políticas públicas, siempre buscando mejorar la efectividad y eficiencia de las intervenciones gubernamentales.</p> </br>
+                </div>
+                <div class="about-image">
+                    <img src="/img/hero/earcosn.png" alt="Vinicio Arcos Naranjo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specialties" class="section">
+        <div class="container">
+            <h2 class="section-title">Investigación</h2>
+            <div class="specialties">
+                <div class="specialty-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Evaluación de Impacto</h3>
+                    <p>Diseño e implementación de estudios para medir el impacto de políticas y programas públicos.</p>
+                </div>
+                <div class="specialty-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Economía de la Educación</h3>
+                    <p>Análisis de políticas educativas y su impacto en el desarrollo del capital humano.</p>
+                </div>
+                <div class="specialty-item">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Mercado Laboral</h3>
+                    <p>Estudio de dinámicas laborales y evaluación de programas de empleo y capacitación.</p>
+                </div>
+                <div class="specialty-item">
+                    <i class="fas fa-database"></i>
+                    <h3>Data Science</h3>
+                    <p>Aplicación de técnicas avanzadas de análisis de datos para informar políticas públicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title">Portafolio de Proyectos</h2>
+            <div class="filter-buttons">
+                <button class="filter-button active" data-filter="all">Todos</button>
+                <button class="filter-button" data-filter="evaluation">Evaluación</button>
+                <button class="filter-button" data-filter="education">Educación</button>
+                <button class="filter-button" data-filter="labor">Laboral</button>
+            </div>
+            <div class="portfolio">
+                <div class="portfolio-item" data-category="evaluation">
+                    <img src="/img/portafolio/overeducation.webp" alt="Proyecto 1">
+                    <div class="portfolio-overlay">
+                        <h3>Sobre-educación en profesionales en el Ecuador</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="education">
+                    <img src="https://via.placeholder.com/400x300" alt="Proyecto 2">
+                    <div class="portfolio-overlay">
+                        <h3>Impacto de Becas en el Rendimiento Académico</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="labor">
+                    <img src="https://via.placeholder.com/400x300" alt="Proyecto 3">
+                    <div class="portfolio-overlay">
+                        <h3>Análisis Predictivo de Tendencias Laborales</h3>
+                    </div>
+                </div>
+            </div>
+            <button class="load-more">Cargar Más Proyectos</button>
+        </div>
+    </section>
+
+
+        <!-- Nueva sección para destacar el libro web -->
+        <section id="libro-destacado" class="section highlight-section">
+            <div class="container">
+                <h2 class="section-title">Libro Web Gratuito</h2>
+                <div class="highlight-content">
+                    <div class="highlight-text">
+                        <h3>Evaluación de Impacto en la Era Digital</h3>
+                        <p>Explora mi libro web gratuito sobre evaluación de impacto y descubre cómo las técnicas modernas están transformando el campo de las políticas públicas.</p>
+                        <a href="libro-web.html" class="btn">Leer el Libro Web</a>
+                    </div>
+                    <div class="highlight-image">
+                        <img src="/img/libro/CoverBookImpactEvaluation3.png" alt="Portada del Libro Web">
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="articulos">
-            <h2>Artículos</h2>
-            <div class="item">
-                <h3>Análisis Econométrico de Series Temporales</h3>
-                <p>Exploración de métodos avanzados para modelar datos temporales en economía. Publicado en 2024.</p>
-                <a href="#">Leer más</a>
-            </div>
-            <div class="item">
-                <h3>Data Science en la Toma de Decisiones</h3>
-                <p>Aplicaciones prácticas de machine learning en contextos económicos. Publicado en 2023.</p>
-                <a href="#">Leer más</a>
-            </div>
-        </section>
 
-        <section id="libros">
-            <h2>Libros</h2>
-            <div class="item">
-                <h3>Fundamentos de Econometría Moderna</h3>
-                <p>Un libro introductorio para estudiantes y profesionales. Publicado en 2022.</p>
-                <a href="#">Comprar</a>
-            </div>
-            <div class="item">
-                <h3>Data Science para Economistas</h3>
-                <p>Guía práctica para aplicar técnicas de datos en investigación económica. Publicado en 2021.</p>
-                <a href="#">Comprar</a>
-            </div>
-        </section>
 
-        <section id="blog">
-            <h2>Blog</h2>
-            <div class="item">
-                <h3>El Futuro de la Econometría con IA</h3>
-                <p>Reflexiones sobre cómo la inteligencia artificial está transformando el análisis económico. 08/04/2025.</p>
-                <a href="#">Leer entrada</a>
-            </div>
-            <div class="item">
-                <h3>Consejos para Iniciarse en Data Science</h3>
-                <p>Una guía para principiantes en el mundo del análisis de datos. 01/03/2025.</p>
-                <a href="#">Leer entrada</a>
-            </div>
-        </section>
 
-        <section id="contacto">
-            <h2>Contacto</h2>
-            <p>¿Interesado en colaborar o en más información? Contáctame en: <a href="mailto:vinicio.arcos@example.com">vinicio.arcos@example.com</a></p>
-        </section>
-    </div>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message"></div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <div class="error-message"></div>
+                </div>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Vinicio Arcos. Todos los derechos reservados.</p>
+        <div class="container">
+            <p>© 2024 Vinicio Arcos Naranjo. Todos los derechos reservados.</p>
+        </div>
     </footer>
+
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
