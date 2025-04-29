@@ -1,0 +1,96 @@
+<h2>Introducción: Evaluación de Impacto en la Era Digital</h2>
+
+<p>Bienvenidos a "Evaluación de Impacto en la Era Digital", un libro web diseñado para explorar la intersección entre las metodologías tradicionales de evaluación de impacto y las nuevas oportunidades y desafíos que presenta la era digital.</p>
+
+<h3>El Panorama Cambiante de la Evaluación de Impacto</h3>
+
+<p>En un mundo cada vez más conectado y basado en datos, la evaluación de impacto ha evolucionado significativamente. Las políticas públicas, los programas de desarrollo y las iniciativas sociales están ahora bajo un escrutinio sin precedentes, con una creciente demanda de evidencia rigurosa sobre su efectividad.</p>
+
+<p>La era digital ha traído consigo:</p>
+<ul>
+    <li>Acceso a volúmenes masivos de datos en tiempo real</li>
+    <li>Nuevas herramientas y técnicas de análisis</li>
+    <li>Mayor capacidad para realizar evaluaciones a gran escala</li>
+    <li>Desafíos éticos relacionados con la privacidad y el uso de datos</li>
+</ul>
+
+<h3>¿Por Qué Este Libro?</h3>
+
+<p>Este libro nace de la necesidad de proporcionar una guía actualizada y práctica para profesionales, investigadores y estudiantes interesados en la evaluación de impacto. Nuestro objetivo es:</p>
+
+<ol>
+    <li>Explorar cómo las tecnologías digitales están transformando la evaluación de impacto</li>
+    <li>Proporcionar una comprensión profunda de los métodos tradicionales y emergentes</li>
+    <li>Discutir los desafíos éticos y prácticos en la era de los big data</li>
+    <li>Ofrecer ejemplos prácticos y estudios de caso del mundo real</li>
+</ol>
+
+<h3>Estructura del Libro</h3>
+
+<p>A lo largo de este libro, abordaremos los siguientes temas:</p>
+
+<ol>
+    <li>Fundamentos de la Evaluación de Impacto</li>
+    <li>Métodos Cuantitativos en la Era Digital</li>
+    <li>Métodos Cualitativos y Mixtos</li>
+    <li>Big Data y Machine Learning en Evaluación de Impacto</li>
+    <li>Diseño de Evaluaciones de Impacto Digitalmente Informadas</li>
+    <li>Ética y Privacidad en la Evaluación Digital</li>
+    <li>Casos de Estudio y Aplicaciones Prácticas</li>
+    <li>El Futuro de la Evaluación de Impacto</li>
+</ol>
+
+<h3>A Quién va Dirigido Este Libro</h3>
+
+<p>Este libro está diseñado para una amplia audiencia, incluyendo:</p>
+
+<ul>
+    <li>Profesionales en evaluación de políticas públicas y programas sociales</li>
+    <li>Investigadores en ciencias sociales y economía</li>
+    <li>Estudiantes de posgrado en campos relacionados</li>
+    <li>Tomadores de decisiones en organizaciones gubernamentales y no gubernamentales</li>
+    <li>Cualquier persona interesada en comprender cómo medir el impacto en la era digital</li>
+</ul>
+
+<h3>Cómo Utilizar Este Libro</h3>
+
+<p>Este libro web está diseñado para ser interactivo y fácil de navegar. Cada capítulo incluirá:</p>
+
+<ul>
+    <li>Contenido teórico y práctico</li>
+    <li>Ejemplos y casos de estudio</li>
+    <li>Elementos interactivos para reforzar el aprendizaje</li>
+    <li>Referencias y recursos adicionales</li>
+</ul>
+
+<p>Te animamos a explorar los capítulos en orden, pero también puedes saltar a temas específicos de tu interés. Los elementos interactivos te permitirán reflexionar sobre el contenido y aplicarlo a tu propio contexto.</p>
+
+<div class="capitulo-interactivo">
+    <h4>Reflexión Inicial</h4>
+    <p>Antes de comenzar, te invitamos a reflexionar sobre las siguientes preguntas:</p>
+    <ol>
+        <li>¿Cuál ha sido tu experiencia con la evaluación de impacto hasta ahora?</li>
+        <li>¿Qué desafíos has enfrentado o anticipas en la evaluación de impacto en la era digital?</li>
+        <li>¿Qué esperas aprender o lograr con este libro?</li>
+    </ol>
+    <textarea id="reflexion-inicial" rows="6" cols="50" placeholder="Escribe tus reflexiones aquí..."></textarea>
+    <button onclick="guardarReflexionInicial()">Guardar Reflexión</button>
+</div>
+
+<p>Estamos emocionados de embarcarnos contigo en este viaje a través de la evaluación de impacto en la era digital. ¡Comencemos!</p>
+
+<script>
+function guardarReflexionInicial() {
+    const reflexion = document.getElementById('reflexion-inicial').value;
+    localStorage.setItem('reflexion-introduccion', reflexion);
+    alert('Tu reflexión inicial ha sido guardada. Puedes revisarla en cualquier momento durante tu lectura del libro.');
+}
+
+// Cargar reflexión guardada si existe
+window.onload = function() {
+    const reflexionGuardada = localStorage.getItem('reflexion-introduccion');
+    if (reflexionGuardada) {
+        document.getElementById('reflexion-inicial').value = reflexionGuardada;
+    }
+};
+</script>
