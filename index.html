@@ -1,175 +1,272 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinicio Arcos Naranjo - Economista y Evaluador de Impacto</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinicio Arcos - Portafolio Profesional</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
+<body class="bg-gray-100 font-sans text-gray-800">
+  <!-- Navigation -->
+  <nav class="bg-blue-900 text-white p-4 sticky top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold">Vinicio Arcos</div>
+      <ul class="flex space-x-4">
+        <li><a href="#home" class="hover:text-red-600">Home</a></li>
+        <li><a href="#about" class="hover:text-red-600">Sobre Mí</a></li>
+        <li><a href="#blog" class="hover:text-red-600">Blog</a></li>
+        <li><a href="#academia" class="hover:text-red-600">Academia</a></li>
+        <li><a href="#research" class="hover:text-red-600">Investigación</a></li>
+        <li><a href="#portfolio" class="hover:text-red-600">Portafolio</a></li>
+        <li><a href="#books" class="hover:text-red-600">Libros</a></li>
+        <li><a href="#courses" class="hover:text-red-600">Cursos</a></li>
+        <li><a href="#resources" class="hover:text-red-600">Recursos</a></li>
+        <li><a href="#contact" class="hover:text-red-600">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<!-- <button id="dark-mode-toggle">🌓</button>  -->
+  <!-- Home Section -->
+  <section id="home" class="py-12 bg-white">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="flex justify-center">
+        <img src="img/vinicio.png" alt="Vinicio Arcos" class="w-[768px] h-[288px] object-cover">
+      </div>
+      <div class="flex flex-col justify-center">
+        <h1 class="text-3xl font-bold text-blue-900">Inspirado por la Economía y la Ciencia de Datos</h1>
+        <p class="text-xl mt-2">Ec. Vinicio Arcos</p>
+        <p class="text-lg mt-1">Docente Investigador</p>
+        <p class="text-lg mt-1">Campos de Investigación: Economía Laboral, Economía de la Educación, Políticas Públicas y Desarrollo</p>
+      </div>
+    </div>
+  </section>
 
-<body>
-    
-    
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Vinicio Arcos</div>
-             
-                <ul class="nav-links">
-                    
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#about">Sobre Mí</a></li>
-                    <li><a href="#specialties">Investigación</a></li>
-                    <li><a href="#portfolio">Portafolio</a></li>
-                    <li><a href="libro-web.html">Ebook</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
+  <!-- About Section -->
+  <section id="about" class="py-12 bg-gray-100">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Sobre Mí</h2>
+      <p class="text-lg">Economista por la Universidad Católica de Cuenca, Máster en Economía por FLACSO, y candidato a Doctor en Políticas Públicas por FLACSO. Tengo experiencia docente en pregrado y posgrado en universidades como la Universidad Técnica de Cotopaxi, Universidad Estatal de Milagro, Universidad Técnica de Ambato, y Universidad Tecnológica Equinoccial. Imparto asignaturas como Econometría, Estadística y Macroeconomía. Mi trabajo se centra en transformar datos en decisiones innovadoras.</p>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="py-12 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Blog</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-gray-50 p-6 rounded shadow">
+          <img src="img/blog1.png" alt="Blog 1" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">Diferencias entre la Ciencia de Datos y la Econometría</h3>
+          <p class="mt-2">La Ciencia de Datos y la Econometría comparten el objetivo de extraer conocimientos a partir de datos, pero difieren en sus enfoques. La Econometría se centra en modelos causales y teoría económica, utilizando métodos estadísticos para probar hipótesis. La Ciencia de Datos, en cambio, prioriza la predicción y el manejo de grandes volúmenes de datos con técnicas de machine learning. Este artículo explora sus fortalezas y aplicaciones en la toma de decisiones.</p>
         </div>
-
-        
-    </header>
-
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Vinicio Arcos-Naranjo</h1>
-            <p>Economista y Docente Universitario, especializado en Evaluación de Impacto de Políticas Públicas y Data Science aplicado a la Economía.</p>
-            <a href="#contact" class="btn">Contáctame</a>
+        <div class="bg-gray-50 p-6 rounded shadow">
+          <img src="img/blog2.png" alt="Blog 2" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">EconomIA: La Inteligencia Artificial y el Futuro del Mercado Laboral</h3>
+          <p class="mt-2">La inteligencia artificial (IA) está transformando el mercado laboral, automatizando tareas y creando nuevas oportunidades. Este artículo analiza cómo la IA afecta a sectores tradicionales y emergentes, y qué habilidades serán esenciales para los economistas en un mundo impulsado por datos. También discutimos los desafíos éticos y las políticas públicas necesarias para una transición equitativa.</p>
         </div>
-    </section>
+        <div class="bg-gray-50 p-6 rounded shadow">
+          <img src="img/blog3.png" alt="Blog 3" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">¿La Sobreeducación Afecta a Mi Trayectoria Laboral como Economista?</h3>
+          <p class="mt-2">La sobreeducación ocurre cuando un profesional tiene más formación de la requerida para su empleo. En este artículo, exploramos cómo este fenómeno impacta a los economistas, analizando si un exceso de credenciales académicas puede limitar oportunidades laborales o, por el contrario, abrir puertas a roles más especializados en un mercado competitivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">Sobre Mí</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Soy un economista con Maestría en Economía y estudios de Políticas Públicas, especializado en la evaluación de impacto de políticas públicas. </p>
-                    <br>Mi enfoque se centra en el mercado laboral y la economía de la educación, utilizando técnicas avanzadas de Econometría, Estadística y Data Science para obtener insights profundos y significativos.</br>
-                    <br><p>Con años de experiencia en el campo, he trabajado en proyectos que han influido en la toma de decisiones de políticas públicas, siempre buscando mejorar la efectividad y eficiencia de las intervenciones gubernamentales.</p> </br>
-                </div>
-                <div class="about-image">
-                    <img src="/img/hero/earcosn.png" alt="Vinicio Arcos Naranjo">
-                </div>
+  <!-- Academia Section -->
+  <section id="academia" class="py-12 bg-gray-100">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Academia</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded shadow">
+          <img src="img/curso1.png" alt="Curso 1" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">Análisis de Datos Económicos con Python</h3>
+          <p class="mt-2">Curso diseñado para economistas que desean dominar Python para el análisis de datos económicos. Cubre visualización, modelado estadístico y técnicas de machine learning aplicadas a problemas económicos.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <img src="img/curso2.png" alt="Curso 2" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">Análisis de Datos Económicos con Excel</h3>
+          <p class="mt-2">Aprende a utilizar Excel para analizar datos económicos, desde funciones básicas hasta herramientas avanzadas como tablas dinámicas y análisis de regresión, orientado a la toma de decisiones.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <img src="img/curso3.png" alt="Curso 3" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">Power BI para Economistas</h3>
+          <p class="mt-2">Este curso enseña a utilizar Power BI para crear visualizaciones interactivas y dashboards que faciliten el análisis de datos económicos y la comunicación de resultados.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <img src="img/curso4.png" alt="Curso 4" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">Econometría I</h3>
+          <p class="mt-2">Introducción a la econometría, cubriendo modelos de regresión lineal, inferencia estadística y aplicaciones prácticas en economía, con énfasis en software como R y Stata.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research" class="py-12 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Investigación</h2>
+      <ul class="list-disc pl-6">
+        <li><a href="https://doi.org/10.69484/rcz/v4/n1/75" class="text-blue-900 hover:text-red-600">Evolución de las empresas fantasmas e inexistentes y el perjuicio causado al estado Ecuatoriano del, 2017 al 2023</a></li>
+        <li><a href="https://revistas.utb.edu.ec/index.php/magazine/article/view/462" class="text-blue-900 hover:text-red-600">Impacto de la oferta educativa superior en la búsqueda de talento humano por parte de las empresas</a></li>
+        <li><a href="http://revistamapa.org/index.php/es" class="text-blue-900 hover:text-red-600">Políticas Estatales: Una mirada hacia la inserción laboral y empleabilidad de Bachilleres Rurales</a></li>
+        <li><a href="http://hdl.handle.net/10469/8011" class="text-blue-900 hover:text-red-600">Debates actuales y perspectivas sobre las políticas sociales en América Latina</a></li>
+        <li><a href="https://osf.io/aj94n/" class="text-blue-900 hover:text-red-600">Análisis Econométrico del Mercado Laboral (2025-2027)</a></li>
+        <li><a href="https://osf.io/dfvui/" class="text-blue-900 hover:text-red-600">Cifras y Narrativas: Reflexiones desde el Censo de Ecuador (2024-2025)</a></li>
+        <li><a href="https://osf.io/xwu6c/" class="text-blue-900 hover:text-red-600">Análisis socioeconómico de los sectores productivos del cantón Latacunga (2024-2025)</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-12 bg-gray-100">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Portafolio</h2>
+      <p class="text-lg">Asesor en IESS: Estudios financieros y actuariales para políticas públicas. Director de Participación en Superintendencia de la Información: Diseño e implementación de procesos. Capacitador en FES-ILDIS: Escuela de Formación Permanente para Actores Sociales.</p>
+    </div>
+  </section>
+
+  <!-- Books Section -->
+  <section id="books" class="py-12 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Libros</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Econometría I -->
+        <div class="bg-gray-50 p-6 rounded shadow">
+          <img src="img/libro1.png" alt="Econometría I" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">Econometría I</h3>
+          <div id="book-viewer">
+            <div id="book-content" class="bg-white p-4 h-64 overflow-y-auto">
+              <h4>Introducción</h4>
+              <p>Este libro introduce los fundamentos de la econometría, una disciplina que combina teoría económica, estadística y matemáticas para analizar datos económicos. A lo largo de los capítulos, se exploran modelos de regresión lineal, inferencia estadística y aplicaciones prácticas, con ejemplos en software como R y Stata. Está diseñado para estudiantes y profesionales que buscan comprender cómo los datos pueden informar decisiones económicas.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="specialties" class="section">
-        <div class="container">
-            <h2 class="section-title">Investigación</h2>
-            <div class="specialties">
-                <div class="specialty-item">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Evaluación de Impacto</h3>
-                    <p>Diseño e implementación de estudios para medir el impacto de políticas y programas públicos.</p>
-                </div>
-                <div class="specialty-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Economía de la Educación</h3>
-                    <p>Análisis de políticas educativas y su impacto en el desarrollo del capital humano.</p>
-                </div>
-                <div class="specialty-item">
-                    <i class="fas fa-briefcase"></i>
-                    <h3>Mercado Laboral</h3>
-                    <p>Estudio de dinámicas laborales y evaluación de programas de empleo y capacitación.</p>
-                </div>
-                <div class="specialty-item">
-                    <i class="fas fa-database"></i>
-                    <h3>Data Science</h3>
-                    <p>Aplicación de técnicas avanzadas de análisis de datos para informar políticas públicas.</p>
-                </div>
+            <div class="flex justify-between mt-4">
+              <button id="prev-page" class="bg-blue-900 text-white px-4 py-2 rounded">Anterior</button>
+              <select id="chapter-select" class="border p-2">
+                <option value="intro">Introducción</option>
+                <option value="ch1">Capítulo 1</option>
+                <option value="ch2">Capítulo 2</option>
+              </select>
+              <button id="next-page" class="bg-blue-900 text-white px-4 py-2 rounded">Siguiente</button>
             </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="section">
-        <div class="container">
-            <h2 class="section-title">Portafolio de Proyectos</h2>
-            <div class="filter-buttons">
-                <button class="filter-button active" data-filter="all">Todos</button>
-                <button class="filter-button" data-filter="evaluation">Evaluación</button>
-                <button class="filter-button" data-filter="education">Educación</button>
-                <button class="filter-button" data-filter="labor">Laboral</button>
+            <div class="mt-4">
+              <button id="increase-font" class="bg-gray-200 px-2 py-1 rounded">A+</button>
+              <button id="decrease-font" class="bg-gray-200 px-2 py-1 rounded">A-</button>
             </div>
-            <div class="portfolio">
-                <div class="portfolio-item" data-category="evaluation">
-                    <img src="/img/portafolio/overeducation.webp" alt="Proyecto 1">
-                    <div class="portfolio-overlay">
-                        <h3>Sobre-educación en profesionales en el Ecuador</h3>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="education">
-                    <img src="https://via.placeholder.com/400x300" alt="Proyecto 2">
-                    <div class="portfolio-overlay">
-                        <h3>Impacto de Becas en el Rendimiento Académico</h3>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="labor">
-                    <img src="https://via.placeholder.com/400x300" alt="Proyecto 3">
-                    <div class="portfolio-overlay">
-                        <h3>Análisis Predictivo de Tendencias Laborales</h3>
-                    </div>
-                </div>
-            </div>
-            <button class="load-more">Cargar Más Proyectos</button>
+          </div>
         </div>
-    </section>
-
-
-        <!-- Nueva sección para destacar el libro web -->
-        <section id="libro-destacado" class="section highlight-section">
-            <div class="container">
-                <h2 class="section-title">Libro Web Gratuito</h2>
-                <div class="highlight-content">
-                    <div class="highlight-text">
-                        <h3>Evaluación de Impacto en la Era Digital</h3>
-                        <p>Explora mi libro web gratuito sobre evaluación de impacto y descubre cómo las técnicas modernas están transformando el campo de las políticas públicas.</p>
-                        <a href="libro-web.html" class="btn">Leer el Libro Web</a>
-                    </div>
-                    <div class="highlight-image">
-                        <img src="/img/libro/CoverBookImpactEvaluation3.png" alt="Portada del Libro Web">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Contacto</h2>
-            <form class="contact-form" id="contact-form">
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" required>
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                    <div class="error-message"></div>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea id="message" name="message" required></textarea>
-                    <div class="error-message"></div>
-                </div>
-                <button type="submit" class="btn">Enviar Mensaje</button>
-            </form>
+        <!-- La trampa del voto popular -->
+        <div class="bg-gray-50 p-6 rounded shadow">
+          <img src="img/libro2.png" alt="La trampa del voto popular" class="w-[768px] h-[288px] mb-4">
+          <h3 class="text-xl font-semibold">La trampa del voto popular: Cómo las mayorías pueden amenazar la democracia y el bienestar</h3>
+          <p class="mt-2">Explora los desafíos de la democracia y el impacto de las decisiones mayoritarias. Disponible en Amazon.</p>
+          <a href="https://a.co/d/3hArPfX" class="text-blue-900 hover:text-red-600">Comprar en Amazon</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <div class="container">
-            <p>© 2024 Vinicio Arcos Naranjo. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+  <!-- Courses Section -->
+  <section id="courses" class="py-12 bg-gray-100">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Cursos</h2>
+      <h3 class="text-2xl font-semibold mb-4">Cursos Docentes</h3>
+      <ul class="list-disc pl-6">
+        <li>Metodologías Activas y Recursos de Aprendizaje Aplicados a la Educación Superior - Universidad Técnica de Cotopaxi (40 horas)</li>
+        <li>Flipped Classroom: Una Experiencia Pedagógica Innovadora - Escuela Politécnica Nacional (64 horas)</li>
+        <li>Formación Docente UNEMI 2020 - Universidad Estatal de Milagro (80 horas)</li>
+        <li>Programa Básico de Formación Docente UNEMI - Universidad Estatal de Milagro (600 horas)</li>
+        <li>Docencia Universitaria - Universidad Técnica de Ambato (80 horas)</li>
+      </ul>
+      <h3 class="text-2xl font-semibold mt-6 mb-4">Cursos Profesionales</h3>
+      <ul class="list-disc pl-6">
+        <li>Microeconomía Aplicada a la Geografía Económica - FLACSO (40 horas)</li>
+        <li>Econometría Aplicada en R - Estudios Econométricos (448 horas)</li>
+        <li>SPSS Avanzado - Escuela Politécnica Nacional (48 horas)</li>
+        <li>Estadística Aplicada con R Studio - Escuela Politécnica Nacional (40 horas)</li>
+        <li>Cómo Armar un Proyecto de Investigación - Universidad Técnica de Ambato (120 horas)</li>
+        <li>Evaluación Financiera de Proyectos de Inversión - Escuela Politécnica Nacional (40 horas)</li>
+        <li>Diseño y Formulación de Proyectos con Marco Lógico - Escuela Politécnica Nacional (40 horas)</li>
+      </ul>
+    </div>
+  </section>
 
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
+  <!-- Resources Section -->
+  <section id="resources" class="py-12 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Recursos</h2>
+      <h3 class="text-2xl font-semibold mb-4">Webs</h3>
+      <ul class="list-disc pl-6">
+        <li><a href="https://www.probabilidadyestadistica.net/" class="text-blue-900 hover:text-red-600">Probabilidad y Estadística</a></li>
+        <li><a href="https://apastyle.apa.org/style-grammar-guidelines" class="text-blue-900 hover:text-red-600">APA Style</a></li>
+      </ul>
+      <h3 class="text-2xl font-semibold mt-6 mb-4">Libros</h3>
+      <ul class="list-disc pl-6">
+        <li><a href="https://wesmckinney.com/book/" class="text-blue-900 hover:text-red-600">Python for Data Analysis</a></li>
+        <li><a href="https://automatetheboringstuff.com/" class="text-blue-900 hover:text-red-600">Automate the Boring Stuff with Python</a></li>
+      </ul>
+      <h3 class="text-2xl font-semibold mt-6 mb-4">Videos</h3>
+      <ul class="list-disc pl-6">
+        <li><a href="https://www.youtube.com/watch?v=5p8e1x vonlg" class="text-blue-900 hover:text-red-600">Josh Angrist: What's the Difference Between Econometrics and Data Science?</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-12 bg-gray-100">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Contacto</h2>
+      <p class="text-lg">Dirección: Av. Los Chasquis y 1028, Ambato, Ecuador</p>
+      <p class="text-lg">Celular: 0992535336</p>
+      <p class="text-lg">Email: <a href="mailto:vinicioarcosnaranjo@gmail.com" class="text-blue-900 hover:text-red-600">vinicioarcosnaranjo@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white p-4 text-center">
+    <p>&copy; 2025 Vinicio Arcos. Transformando datos en decisiones innovadoras.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

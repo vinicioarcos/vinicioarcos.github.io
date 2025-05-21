@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #003087;
+    color: white;
+    padding: 1rem;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+nav ul li a:hover {
+    background-color: #0051a2;
+    border-radius: 5px;
+}
+
+section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+#home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.home-left, .home-right {
+    flex: 1;
+}
+
+.home-left img {
+    max-width: 200px;
+    border-radius: 50%;
+}
+
+.home-right h2 {
+    font-size: 2rem;
+    color: #003087;
+}
+
+.home-right h3 {
+    font-size: 1.5rem;
+    color: #555;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.course {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.course img {
+    max-width: 100%;
+    height: auto;
+}
+
+.book-reader {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.book-controls {
+    margin-bottom: 1rem;
+}
+
+.book-controls button, .book-controls select {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+footer {
+    background-color: #003087;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
