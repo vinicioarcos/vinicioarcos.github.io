@@ -251,12 +251,12 @@
       max-width: 560px;
     }
 
-    .hero-bio a {
-      color: var(--text-primary);
-      text-decoration: none;
-    }
-    .hero-bio a:hover {
-      text-decoration: underline;
+    .hero-bio a,
+    .hero-bio a:link,
+    .hero-bio a:visited {
+      color: var(--text-primary) !important;
+      text-decoration: none !important;
+      pointer-events: none;
     }
 
     .hero-links {
