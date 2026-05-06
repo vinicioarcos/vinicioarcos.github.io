@@ -508,6 +508,43 @@
       background: #2c3e50;
     }
 
+    /* Book 1: Econometría I — deep navy, mathematical */
+    .book-cover-placeholder.econ-i {
+      background: linear-gradient(160deg, #0a1628 0%, #1e3a5f 100%);
+    }
+    .book-cover-placeholder.econ-i .cover-formula {
+      font-family: Georgia, serif;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.04em;
+      margin-top: 10px;
+    }
+
+    /* Book 3: Econometría Financiera con Python — forest green */
+    .book-cover-placeholder.econ-python {
+      background: linear-gradient(160deg, #0b2418 0%, #1a5c38 100%);
+    }
+    .book-cover-placeholder.econ-python .cover-tag {
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.30);
+      letter-spacing: 0.03em;
+      margin-top: 10px;
+    }
+
+    /* Book 4: Evaluación de Impacto — deep purple */
+    .book-cover-placeholder.econ-impact {
+      background: linear-gradient(160deg, #150a2e 0%, #3b1f72 100%);
+    }
+    .book-cover-placeholder.econ-impact .cover-tag {
+      font-family: Georgia, serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
     .book-cover-placeholder .book-badge {
       position: absolute;
       top: 14px;
@@ -1209,7 +1246,12 @@
 
         <!-- Book 1: Econometría I -->
         <div class="book-card">
-          <img src="img/libro/CoverBookImpactEvaluation.png" alt="Econometría I" class="book-cover">
+          <div class="book-cover-placeholder econ-i">
+            <div class="cover-title">Econometría I</div>
+            <div class="cover-rule"></div>
+            <div class="cover-author">Vinicio Arcos</div>
+            <div class="cover-formula">Ŷ = β₀ + β₁X + ε</div>
+          </div>
           <div class="book-card-body">
             <h3>Econometría I</h3>
             <p>Introducción a la econometría con modelos de regresión, inferencia estadística y aplicaciones en R y Stata.</p>
@@ -1229,9 +1271,12 @@
 
         <!-- Book 3: Econometría Financiera con Python (NEW) -->
         <div class="book-card">
-          <div style="position:relative;">
-            <img src="img/libro/CoverBookImpactEvaluation2.png" alt="Econometría Financiera con Python" class="book-cover">
+          <div class="book-cover-placeholder econ-python">
             <span class="book-badge">En preparación</span>
+            <div class="cover-title">Econometría Financiera con Python</div>
+            <div class="cover-rule"></div>
+            <div class="cover-author">Vinicio Arcos</div>
+            <div class="cover-tag">import statsmodels</div>
           </div>
           <div class="book-card-body">
             <h3>Econometría Financiera con Python</h3>
@@ -1243,7 +1288,12 @@
 
         <!-- Book 4: Evaluación de Impacto en la Era Digital -->
         <div class="book-card">
-          <img src="img/libro/CoverBookImpactEvaluation3.png" alt="Evaluación de Impacto en la Era Digital" class="book-cover">
+          <div class="book-cover-placeholder econ-impact">
+            <div class="cover-title">Evaluación de Impacto en la Era Digital</div>
+            <div class="cover-rule"></div>
+            <div class="cover-author">Vinicio Arcos</div>
+            <div class="cover-tag">Causalidad · Datos · Política</div>
+          </div>
           <div class="book-card-body">
             <h3>Evaluación de Impacto en la Era Digital</h3>
             <p>Métodos de evaluación de impacto aplicados a la era digital, con énfasis en causalidad y política pública.</p>
