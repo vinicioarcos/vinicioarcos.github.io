@@ -1506,6 +1506,12 @@
 
   <!-- Book viewer navigation (external) -->
   <script src="script.js"></script>
-
+  <script>
+    document.querySelectorAll('.hero-bio a').forEach(function(a) {
+      var span = document.createElement('span');
+      span.innerHTML = a.innerHTML;
+      a.parentNode.replaceChild(span, a);
+    });
+  </script>
 </body>
 </html>
